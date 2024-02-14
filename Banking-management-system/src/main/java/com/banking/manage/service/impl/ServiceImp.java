@@ -67,7 +67,7 @@ public class ServiceImp implements AccountService {
 		Account accountId = accountRepository.findById(id).orElseThrow(()->new RuntimeException("Account Doesnot Exist"));
 		
 		if(accountId.getAmount()<money) {
-			throw new RuntimeException("InSufficient Balance");
+			throw new IllegalArgumentException("InSufficient Balance");
 		}
 		
 		double total_balance=accountId.getAmount() - money;
